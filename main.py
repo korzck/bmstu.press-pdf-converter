@@ -6,22 +6,25 @@ import bs4
 session = requests.Session()
 header = {
     'user-agent': 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 5.2; Trident/5.0)',
-    'Cookie': 'pase ur cookie here'
+    'Cookie': 'pase ur cookie'
 }
 
 book_url = 'https://bmstu.press/catalog/item/6864/'
 
-response = session.get(book_url+'/reader/', headers=header).text
-f = open('index.html', 'w').write(response)
-soup = bs4.BeautifulSoup(response, 'lxml')
-
-try:
-    reader = soup.find('div', id='app-reader').find('app-reader')['url'][0:-11]+'mybook0001.xhtml'
-    print(reader)
-except:
-    print('bad page!')
+book_cover = session.get(book_url+'/reader/', headers=header).text
+parsed_book_cover = bs4.BeautifulSoup(book_cover, 'lxml')
 
 
 
-
-
+num = 1
+while True:
+    page_num = '{0:0>4}'.format(num)
+    try:
+        reader = parsed_book_cover.find('div', id='app-reader').find('app-reader')['url'][0:-11]+'mybook' + page_num + '.xhtml'
+        if requests.get(reader).headers['content-type'] == 'text/html; charset=utf-8':
+            raise
+        print(reader)
+        num = num + 1
+    except:
+        print('bad page! total pages', int(page_num)-1)
+        break
