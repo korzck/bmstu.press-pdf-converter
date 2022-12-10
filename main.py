@@ -1,7 +1,6 @@
 import requests
 import bs4
 import xml.etree.ElementTree as ET
-from pyhtml2pdf import converter
 
 def download(url: str, path: str):
     f = open(path, 'wb')
