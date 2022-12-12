@@ -15,6 +15,13 @@ header = {
 
 В переменную `book_url` необходимо записать строку в формате `'https://bmstu.press/catalog/item/1234/'`. 
 
+Требования
+```
+bs4
+requests
+xml
+```
+
 ### Авторские права не нарушены, разработчики этого скрипта не несут ответственности за чужие действия!
 
 ### No copyrights were violated, all developers of this script are not responsible for any actions of third parties!
