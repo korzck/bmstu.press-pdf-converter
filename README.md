@@ -22,6 +22,4 @@ requests
 xml
 ```
 
-### Авторские права не нарушены, разработчики этого скрипта не несут ответственности за чужие действия!
-
-### No copyrights were violated, all developers of this script are not responsible for any actions of third parties!
+### Авторские права не нарушены, разработчик этого скрипта не несет ответственности за чужие действия!
